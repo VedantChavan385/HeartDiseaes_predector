@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Predictor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="container mx-auto bg-white rounded-xl shadow-2xl p-8 md:p-12 border border-gray-200">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">Heart Health Dashboard</h1>
+            <p class="mt-2 text-lg text-gray-500">Simulate a heart disease prediction based on patient data.</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Patient Information Card -->
+            <div class="lg:col-span-2 bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-md">
+                <div class="flex items-center mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.93 0 3.5 1.57 3.5 3.5S13.93 12 12 12s-3.5-1.57-3.5-3.5S10.07 5 12 5zm0 14.2c-2.7 0-5.8 1.2-8.5 2.8.9-2.5 2.6-4.9 4.9-6.9C9.2 11.2 10.5 10.2 12 10.2c1.5 0 2.8 1 4.1 2.4 2.3 2.1 4 4.5 4.9 6.9-2.7-1.6-5.8-2.8-8.5-2.8z"/>
+                    </svg>
+                    <h2 class="ml-3 text-2xl font-semibold text-gray-800">Patient Information</h2>
+                </div>
+
+                <form id="predictionForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="patientName" class="block text-sm font-medium text-gray-700 mb-1">Patient Name</label>
+                            <input type="text" id="patientName" name="patientName" class="form-input" placeholder="e.g., John Doe">
+                        </div>
+                        <div>
+                            <label for="patientId" class="block text-sm font-medium text-gray-700 mb-1">Patient ID</label>
+                            <input type="text" id="patientId" name="patientId" class="form-input" placeholder="e.g., P12345">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="age" class="block text-sm font-medium text-gray-700 mb-1">Age</label>
+                            <input type="number" id="age" name="age" class="form-input" placeholder="e.g., 58">
+                        </div>
+                        <div>
+                            <label for="sex" class="block text-sm font-medium text-gray-700 mb-1">Sex (0=Female, 1=Male)</label>
+                            <input type="number" id="sex" name="sex" class="form-input" placeholder="e.g., 1">
+                        </div>
+                        <div>
+                            <label for="cp" class="block text-sm font-medium text-gray-700 mb-1">Chest Pain Type (cp)</label>
+                            <input type="number" id="cp" name="cp" class="form-input" placeholder="e.g., 0">
+                        </div>
+                        <div>
+                            <label for="trestbps" class="block text-sm font-medium text-gray-700 mb-1">Resting Blood Pressure (trestbps)</label>
+                            <input type="number" id="trestbps" name="trestbps" class="form-input" placeholder="e.g., 150">
+                        </div>
+                        <div>
+                            <label for="chol" class="block text-sm font-medium text-gray-700 mb-1">Cholesterol (chol)</label>
+                            <input type="number" id="chol" name="chol" class="form-input" placeholder="e.g., 270">
+                        </div>
+                        <div>
+                            <label for="fbs" class="block text-sm font-medium text-gray-700 mb-1">Fasting Blood Sugar > 120 mg/dl (fbs)</label>
+                            <input type="number" id="fbs" name="fbs" class="form-input" placeholder="e.g., 0">
+                        </div>
+                        <div>
+                            <label for="restecg" class="block text-sm font-medium text-gray-700 mb-1">Resting Electrocardiographic Results (restecg)</label>
+                            <input type="number" id="restecg" name="restecg" class="form-input" placeholder="e.g., 0">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label for="thalach" class="block text-sm font-medium text-gray-700 mb-1">Max Heart Rate Achieved (thalach)</label>
+                            <input type="number" id="thalach" name="thalach" class="form-input" placeholder="e.g., 111">
+                        </div>
+                        <div>
+                            <label for="exang" class="block text-sm font-medium text-gray-700 mb-1">Exercise Induced Angina (exang)</label>
+                            <input type="number" id="exang" name="exang" class="form-input" placeholder="e.g., 1">
+                        </div>
+                        <div>
+                            <label for="oldpeak" class="block text-sm font-medium text-gray-700 mb-1">ST Depression Induced by Exercise (oldpeak)</label>
+                            <input type="number" step="0.1" id="oldpeak" name="oldpeak" class="form-input" placeholder="e.g., 0.8">
+                        </div>
+                        <div>
+                            <label for="slope" class="block text-sm font-medium text-gray-700 mb-1">Slope of Peak Exercise ST Segment (slope)</label>
+                            <input type="number" id="slope" name="slope" class="form-input" placeholder="e.g., 2">
+                        </div>
+                        <div>
+                            <label for="ca" class="block text-sm font-medium text-gray-700 mb-1">Number of Major Vessels (ca)</label>
+                            <input type="number" id="ca" name="ca" class="form-input" placeholder="e.g., 0">
+                        </div>
+                        <div>
+                            <label for="thal" class="block text-sm font-medium text-gray-700 mb-1">Thallium Stress Test (thal)</label>
+                            <input type="number" id="thal" name="thal" class="form-input" placeholder="e.g., 3">
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 mt-4">
+                        <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-md">
+                            Predict
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Prediction & Explanation Card -->
+            <div class="lg:col-span-1 bg-gray-50 rounded-xl p-6 border border-gray-200 shadow-md flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <h2 class="ml-3 text-2xl font-semibold text-gray-800">Prediction Results</h2>
+                    </div>
+
+                    <div id="resultBox" class="mt-4">
+                        <div id="predictionOutput" class="message-box"></div>
+                        <div id="actionButtons" class="mt-4 flex flex-col space-y-4" style="display: none;">
+                            <!-- <button id="explainButton" class="w-full bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105 shadow-md">
+                                Get an Explanation ✨
+                            </button>
+                            <button id="tipsButton" class="w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-105 shadow-md">
+                                Generate Health Tips ✨
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gemini API Output Sections -->
+                <div class="mt-8 space-y-4">
+                    <div id="loadingIndicator" class="loading-spinner"></div>
+                    <div id="explanationOutput" class="p-4 bg-gray-100 rounded-lg text-gray-700" style="display: none;"></div>
+                    <div id="tipsOutput" class="p-4 bg-gray-100 rounded-lg text-gray-700" style="display: none;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
