@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 # Heart Disease predection website
-=======
+<hr>
 # HeartDiseaes_predector
 The Heart Disease Prediction Website is a web-based platform designed to help users assess their risk of developing heart-related conditions using machine learning models.
->>>>>>> ba603e5dcc7a4914543f5dc9d98c8788a9754238
+<hr>
 This project is a web application designed to predict the likelihood of a person having heart disease based on various medical and personal attributes. It leverages machine learning to provide a quick, data-driven analysis that can be used for informational purposes.
 
 Technologies Used 💻
