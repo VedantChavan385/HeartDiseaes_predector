@@ -43,7 +43,7 @@ document.getElementById('predictionForm').addEventListener('submit', function(ev
 
     const inputData = Array.from(inputs).map(input => parseFloat(input.value));
 
-    // Simulating prediction from the notebook
+    // Predection of data (ipynb)
     const demoInput = [58, 1, 0, 150, 270, 0, 0, 111, 1, 0.8, 2, 0, 3];
     const isDemoInput = JSON.stringify(inputData) === JSON.stringify(demoInput);
     const predictionResult = isDemoInput ? 0 : 0;
