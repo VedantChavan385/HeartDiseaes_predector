@@ -6,8 +6,8 @@ The Heart Disease Prediction Website is a web-based platform designed to help us
 <hr>
 This project is a web application designed to predict the likelihood of a person having heart disease based on various medical and personal attributes. It leverages machine learning to provide a quick, data-driven analysis that can be used for informational purposes.
 <hr>
-<b>Technologies Used 💻</b>
-<u/>Frontend:
+Technologies Used 💻<br>
+Frontend:
 
 HTML: For the structure of the web pages.
 
@@ -15,13 +15,13 @@ CSS: For styling and layout.
 
 JavaScript: For client-side form validation and interactive elements.
 
-<u/>Backend:
+Backend:
 
 Python: The core programming language for the server-side logic.
 
 Flask: A micro web framework used to handle HTTP requests, serve the HTML pages, and connect the front-end with the machine learning model.
 
-<u/>Machine Learning:
+Machine Learning:
 
 Scikit-learn: A powerful Python library used for building and training the heart disease prediction model.
 
